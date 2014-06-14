@@ -1,0 +1,23 @@
+package_name=hello
+package_version=2.9
+package_release=1
+package_desc="GNU Hello"
+source=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.gz")
+md5sums=('67607d2616a0faaf5bc94c59dca7c3cb')
+
+build() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  ./configure --prefix=/
+  make
+}
+
+check() {
+  return 0
+}
+
+package() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  make DESTDIR="${package_dir}" install
+  rm -f "${package_dir}/usr/share/info/dir"
+}
+
