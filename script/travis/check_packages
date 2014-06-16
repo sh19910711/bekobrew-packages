@@ -11,7 +11,7 @@ git clone --single-branch -b misc git://github.com/sh19910711/bekobrew-packages.
 for package_name in `get_all_package_fullnames`; do
   grep ${package_name}-${package_version}-${package_release} ${repo_dir}/${GOOD_PACKAGE_LIST_FILENAME}
   ret=$?
-  if [ $? -eq 0 ]; then
+  if [ $ret -eq 0 ]; then
     echo "${package_name}: Passed"
   else
     echo "${package_name}: Failed"
