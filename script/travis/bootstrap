@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# featureブランチのときのみmakepkgを行う
+# master/developブランチではmiscの結果を見てテスト結果を返す
+
+source ./lib/utils.sh
+
+if is_feature_branch; then
+  ./script/travis/feature || exit 1
+elif is_master_or_develop_branch; then
+  ./script/travis/check_packages || exit 1
+else
+  echo "nothing to do"
+fi
+
