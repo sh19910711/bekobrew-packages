@@ -1,6 +1,9 @@
 language: ruby
 rvm:
   - 2.1.1
+install:
+  - curl -O https://u-aizu.github.io/bekobrew/install.sh | bash -s -- --develop
+  - find $HOME/local/opt -name bekobrew -type f -exec export PATH=`dirname {}`:${PATH} \;
 script:
   - make test
   - script/travis/bootstrap
