@@ -52,7 +52,7 @@ function get_tested_package_fullnames() {
 }
 
 function is_feature_branch() {
-  [[ "${TRAVIS_BRANCH}" =~ "^feature\/" ]]
+  [[ "${TRAVIS_BRANCH}" =~ ^feature\/ ]]
 }
 
 function is_master_or_develop_branch() {
