@@ -6,7 +6,7 @@ before_install:
   - git config --global user.name "Mr. Bot"
 install:
   - curl https://u-aizu.github.io/bekobrew/install.sh | bash -s -- --develop
-  - find $HOME/local/opt -name bekobrew -type f -exec export PATH=`dirname {}`:${PATH} \;
+  - export PATH=`find $HOME/local/opt -name bekobrew -type f -exec dirname {} \; | tac | tr '\n' ':' | sed -e 's/:$//'`:${PATH}
 script:
   - make test
   - script/travis/bootstrap
