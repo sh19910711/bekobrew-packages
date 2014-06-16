@@ -78,6 +78,7 @@ function is_master_or_develop_branch() {
 # テストを実行する
 function run_test() {
   local package_name=$1
+  source "packages/${package_name}/BEKOBUILD"
   pushd ${package_name}
   bekobrew makepkg
   local ret=$?
