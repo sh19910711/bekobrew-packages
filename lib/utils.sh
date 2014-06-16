@@ -80,7 +80,9 @@ function is_master_or_develop_branch() {
 function run_test() {
   local package_name=$1
   source "packages/${package_name}/BEKOBUILD"
-  pushd ${package_name}
+  local tmpdir=`mktemp -d`
+  cp -r packages/${package_name} ${tmpdir}/
+  pushd ${tmpdir}/${package_name}
   bekobrew makepkg
   local ret=$?
   if [ ${ret} -eq 0 ]; then
