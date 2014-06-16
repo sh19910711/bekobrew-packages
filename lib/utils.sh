@@ -18,7 +18,7 @@ function get_oldref() {
 
 # すべてのパッケージの名前を取得する
 function get_all_package_names() {
-  for dirname in `ls -1`; do
+  for dirname in `ls -1 packages/`; do
     if [ -f "packages/${dirname}/BEKOBUILD" ]; then
       echo ${dirname}
     fi
