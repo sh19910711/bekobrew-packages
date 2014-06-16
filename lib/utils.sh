@@ -56,7 +56,7 @@ function is_feature_branch() {
 }
 
 function is_master_or_develop_branch() {
-  [[ "${TRAVIS_BRANCH}" -eq "master" ]] || [[ "${TRAVIS_BRANCH}" -eq "develop" ]]
+  [[ "${TRAVIS_BRANCH}" == "master" ]] || [[ "${TRAVIS_BRANCH}" == "develop" ]]
 }
 
 # テストを実行する
