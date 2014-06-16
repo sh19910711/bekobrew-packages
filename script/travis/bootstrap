@@ -5,9 +5,9 @@
 
 source ./lib/utils.sh
 
-if [ is_feature_branch = true ]; then
+if is_feature_branch; then
   ./script/travis/feature || exit 1
-elif [ is_master_or_develop_branch = true ]; then
+elif is_master_or_develop_branch; then
   ./script/travis/check_packages || exit 1
 else
   echo "nothing to do"
