@@ -51,6 +51,14 @@ function get_tested_package_fullnames() {
   done
 }
 
+function is_feature_branch() {
+  [[ "${TRAVIS_BRANCH}" =~ "^feature\/" ]]
+}
+
+function is_master_or_develop_branch() {
+  [[ "${TRAVIS_BRANCH}" -eq "master" ]] || [[ "${TRAVIS_BRANCH}" -eq "develop" ]]
+}
+
 # テストを実行する
 function run_test() {
   local package_name=$1
