@@ -11,7 +11,6 @@ git clone --single-branch -b misc git://github.com/sh19910711/bekobrew-packages.
 cat ${repo_dir}/${GOOD_PACKAGE_LIST_FILENAME}
 
 for package_name in `get_all_package_fullnames`; do
-  source packages/${package_name}/BEKOBUILD
   grep ${package_name} ${repo_dir}/${GOOD_PACKAGE_LIST_FILENAME}
   ret=$?
   if [ $ret -eq 0 ]; then
