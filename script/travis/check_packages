@@ -15,6 +15,7 @@ for package_name in `get_all_package_fullnames`; do
     echo "${package_name}: Passed"
   else
     echo "${package_name}: Failed"
+    exit 1
   fi
 done
 
