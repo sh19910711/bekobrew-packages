@@ -6,8 +6,10 @@
 source ./lib/utils.sh
 
 if is_feature_branch; then
+  echo "is_feature_branch"
   ./script/travis/feature || exit 1
 elif is_master_or_develop_branch; then
+  echo "is_master_or_develop_branch"
   ./script/travis/check_packages || exit 1
 else
   echo "nothing to do"
