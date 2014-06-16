@@ -12,7 +12,7 @@ build() {
 }
 
 check() {
-  echo check: start!
+  echo check: start
   return 0
 }
 
