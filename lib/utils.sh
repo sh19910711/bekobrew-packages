@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GOOD_PACKAGE_LIST_FILENAME=good_packages
+
 # HEADに最大で3つの~を付けて出力する
 function get_oldref() {
   local refname="HEAD"
@@ -39,8 +41,13 @@ function run_test() {
   bekobrew makepkg
   local ret=$?
   if [ ${ret} -eq 0 ]; then
-    # TODO: テストを通ったパッケージの一覧に追加する
-    echo test
+    local repo_dir=tmp/bekobrew-packages
+    git clone --single-branch -b misc git://github.com/sh19910711/bekobrew-packages.git ${repo_dir}
+    cd ${repo_dir}
+    echo ${package_name} >> ${GOOD_PACKAGE_LIST_FILENAME}
+    git add ${GOOD_PACKAGE_LIST_FILENAME}
+    git commit --allow-empty -m "update ${GOOD_PACKAGE_LIST_FILENAME}"
+    git push --quiet https://${GITHUB_TOKEN}@github.com/sh19910711/bekobrew-packages.git misc 2> /dev/null
   fi
   popd
 }
