@@ -16,6 +16,23 @@ function get_oldref() {
   echo ${refname}
 }
 
+# すべてのパッケージの名前を取得する
+function get_all_package_names() {
+  for dirname in `ls -1`; do
+    if [ -f "${dirname}/BEKOBUILD" ]; then
+      echo ${dirname}
+    fi
+  done
+}
+
+# すべてのパッケージの名前を取得する（バージョン文字列を含む）
+function get_all_package_fullnames() {
+  for package_name in `get_all_package_names`; do
+    source "${package_name}/BEKOBUILD"
+    echo ${package_name}-${package_version}-${package_release}
+  done
+}
+
 # テスト対象となるパッケージ名のリストを取得
 function get_tested_package_names() {
   local refname=`get_oldref`
