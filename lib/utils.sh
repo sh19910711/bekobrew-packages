@@ -19,7 +19,7 @@ function get_oldref() {
 # すべてのパッケージの名前を取得する
 function get_all_package_names() {
   for dirname in `ls -1`; do
-    if [ -f "${dirname}/BEKOBUILD" ]; then
+    if [ -f "packages/${dirname}/BEKOBUILD" ]; then
       echo ${dirname}
     fi
   done
@@ -28,7 +28,7 @@ function get_all_package_names() {
 # すべてのパッケージの名前を取得する（バージョン文字列を含む）
 function get_all_package_fullnames() {
   for package_name in `get_all_package_names`; do
-    source "${package_name}/BEKOBUILD"
+    source "packages/${package_name}/BEKOBUILD"
     echo ${package_name}-${package_version}-${package_release}
   done
 }
@@ -37,7 +37,7 @@ function get_tested_package_names_func() {
   local refname="HEAD"
   for i in `seq 1 3`; do
     for dirname in `git diff-tree --name-only --no-commit-id ${refname}`; do
-      if [ -f "${dirname}/BEKOBUILD" ]; then
+      if [ -f "packages/${dirname}/BEKOBUILD" ]; then
         echo ${dirname}
       fi
     done
@@ -62,7 +62,7 @@ function get_tested_package_names() {
 # テスト対象となるパッケージのリストを取得（バージョン文字列を含むこと）
 function get_tested_package_fullnames() {
   for package_name in `get_tested_package_names`; do
-    source "${package_name}/BEKOBUILD"
+    source "packages/${package_name}/BEKOBUILD"
     echo ${package_name}-${package_version}-${package_release}
   done
 }
