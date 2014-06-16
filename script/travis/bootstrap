@@ -1,25 +1,15 @@
 #!/bin/bash
-#
-# 概要:
-# Travis CI で利用するスクリプト
-#
-# テスト流れ:
-# テストはビルドが成功するかどうかを見る（check 関数までの実行）
-# すべてのパッケージ（`master`に含まれるバージョン）が通ったら bekobrew-packages
-# リポジトリのテストが通ったことにする
-# 通ったパッケージの一覧は何らかのブランチ(`misc` とか？)に記録しておく
-#
-# テストを通ったパッケージリスト:
-# `misc` ブランチ
-# ファイル名: good_packages
-# {バージョン文字列を含むパッケージ名} のリスト
-# このファイルに、masterブランチに含まれるBEKOBUILDファイルの情報が
-# すべて含まれていればテストを通ったことにする
+
+# featureブランチのときのみmakepkgを行う
+# master/developブランチではmiscの結果を見てテスト結果を返す
 
 source ./lib/utils.sh
 
-for package_name in `get_tested_package_names`; do
-  echo "Testing: ${package_name}"
-  run_test ${package_name}
-done
+if [ is_feature_branch = true ]; then
+  ./script/travis/feature || exit 1
+elif [ is_master_or_develop_branch = true ]; then
+  ./script/travis/check_packages || exit 1
+else
+  echo "nothing to do"
+fi
 
