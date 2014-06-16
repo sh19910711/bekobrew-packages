@@ -37,7 +37,7 @@ function get_tested_package_names_func() {
   local refname="HEAD"
   for i in `seq 1 3`; do
     for dirname in `git diff-tree -r --name-only --no-commit-id ${refname}`; do
-      dirname=`echo $dirname | sed -e "s/^packages\/\(.*\)\/'"${GOOD_PACKAGE_LIST_FILENAME}"$'/\1/"`
+      dirname=`echo $dirname | sed -e "s/^packages\/\(.*\)\/BEKOBUILD$/\1/g"`
       if [ -f "packages/${dirname}/BEKOBUILD" ]; then
         echo ${dirname}
       fi
