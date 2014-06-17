@@ -33,7 +33,7 @@ function update_gh_pages() {
       git add ${package_db}
       git commit -m "update ${package_db}"
       git add ${archive_filename}
-      git commit -m "add ${archive_filename}"
+      git commit -m "add packages/${package_fullname}.tar.bz2"
       popd
     fi
   done
