@@ -1,0 +1,14 @@
+language: ruby
+rvm:
+  - 2.1.1
+before_install:
+  - git config --global user.email "sh19910711+ynkkowrv0b14@gmail.com"
+  - git config --global user.name "Mr. Bot"
+install:
+  - curl https://u-aizu.github.io/bekobrew/install.sh | bash -s -- --develop
+  - export PATH=`find $HOME/local/opt -name bekobrew -type f -exec dirname {} \; | tac | tr '\n' ':' | sed -e 's/:$//'`:${PATH}
+script:
+  - make test
+  - script/travis/bootstrap
+env:
+  - secure: "CGy0ARtz0kfW+MyAEt/PFt3CJMkG560/dCA7haTiBXGwf6fCyLS/0g/2g2DvjaHUIZ9kJLq2PqP5bb2DsWuDVXvdptc4B40djweZvTXIhSNGSqKcVnJfdxLUp+ysO3gIjVWuHpMkGy3oe0+YqOXv/3GxYRPti6nGlGtvgvNF/1k="

@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# featureブランチのときのみmakepkgを行う
+# master/developブランチではmiscの結果を見てテスト結果を返す
+
+source ./lib/utils.sh
+
+if is_feature_branch; then
+  # ビルドテスト
+  echo "is_feature_branch"
+  ./script/travis/feature || exit 1
+elif is_master_or_develop_branch; then
+  # 全パッケージ確認
+  echo "is_master_or_develop_branch"
+  ./script/travis/check_packages || exit 1
+else
+  echo "nothing to do"
+fi
+
+if is_master_branch; then
+  # u-aizu/packages へ push
+  ./script/travis/master || exit 1
+fi
+
+if is_packages_branch; then
+  # GitHub Pages へ push
+  ./script/travis/packages || exit 1
+fi
+

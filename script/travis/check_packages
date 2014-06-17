@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# パッケージの一覧を取り出して、
+# すべてのパッケージが misc ブランチのリストに含まれているかどうかを確認する
+
+source ./lib/utils.sh
+
+repo_dir=tmp/bekobrew-packages
+git clone --single-branch -b misc git://github.com/sh19910711/bekobrew-packages.git ${repo_dir}
+
+cat ${repo_dir}/${GOOD_PACKAGE_LIST_FILENAME}
+
+for package_fullname in `get_all_package_fullnames`; do
+  grep ${package_fullname} ${repo_dir}/${GOOD_PACKAGE_LIST_FILENAME}
+  ret=$?
+  if [ $ret -eq 0 ]; then
+    echo "${package_fullname}: Passed"
+  else
+    echo "${package_fullname}: Failed"
+    exit 1
+  fi
+done
+
