@@ -1,5 +1,7 @@
 #!/bin/bash
 
+source ./lib/utils.sh
+
 # アーカイブファイルを作成
 # パッケージデータベースを更新する
 function update_gh_pages() {
@@ -14,6 +16,7 @@ function update_gh_pages() {
     source ./packages/${package_name}/BEKOBUILD
     local package_fullname=${package_name}-${package_version}-${package_release}
     local archive_filename=${repodir}/packages/${package_fullname}.tar.bz2
+    mkdir -p ${repodir}/packages || true
     grep ${package_fullname} ${package_db}
     local ret=$?
     if [ $ret -ne 0 ]; then
