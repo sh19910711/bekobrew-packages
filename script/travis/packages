@@ -43,7 +43,7 @@ function update_gh_pages() {
 
   # push
   pushd ${repodir}
-  git push --quiet https://${GITHUB_TOKEN}@github.com/u-aizu/bekobrew.git gh-pages 2> /dev/null
+  git push --quiet https://${PACKAGES_GITHUB_TOKEN}@github.com/u-aizu/bekobrew.git gh-pages 2> /dev/null
   popd
 }
 
