@@ -32,10 +32,12 @@ function update_gh_pages() {
 
       # コミット
       pushd ${repodir}
+      git status --untracked-files
       git add ${package_db}
       git commit -m "update ${package_db}"
       git add ${archive_filename}
       git commit -m "add ${archive_filename}"
+      popd
     fi
   done
 
