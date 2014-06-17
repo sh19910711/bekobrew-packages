@@ -17,6 +17,15 @@ function get_oldref() {
   echo ${refname}
 }
 
+function get_package_information() {
+  local package_name=$1
+  source ./packages/${package_name}/BEKOBUILD
+  local package_fullname=${package_name}-${package_version}-${package_release}
+  printf "${package_fullname}\t"
+  printf "https://u-aizu.github.com/bekobrew/packages/${package_fullname}-${package_version}-${package_release}.tar.bz2\t"
+  printf "${package_desc}\n"
+}
+
 # すべてのパッケージの名前を取得する
 function get_all_package_names() {
   for dirname in `ls -1 packages/`; do

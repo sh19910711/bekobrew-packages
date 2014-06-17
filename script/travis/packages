@@ -21,10 +21,7 @@ function update_gh_pages() {
     local ret=$?
     if [ $ret -ne 0 ]; then
       # パッケージ一覧に追加する
-      printf "${package_fullname}\t"\
-        "https://u-aizu.github.com/bekobrew/packages/${package_fullname}-${package_version}-${package_release}.tar.bz2\t"\
-        "${package_desc}"\
-        >> ${package_db}
+      get_package_information ${package_name} >> ${package_db}
       # アーカイブファイルを追加する
       pushd ./packages
       tar cvf ${archive_filename} ${package_name}
