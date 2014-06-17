@@ -1,0 +1,5 @@
+#!/bin/bash
+
+git reset --hard
+git push --quiet https://${GITHUB_TOKEN}@github.com/u-aizu/bekobrew.git master:packages 2> /dev/null
+

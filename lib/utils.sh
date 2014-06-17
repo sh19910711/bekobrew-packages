@@ -1,6 +1,7 @@
 #!/bin/bash
 
 GOOD_PACKAGE_LIST_FILENAME=good_packages
+PACKAGE_DATABASE_FILENAME=packages.db
 
 # HEADに最大で3つの~を付けて出力する
 function get_oldref() {
@@ -74,6 +75,14 @@ function is_feature_branch() {
 
 function is_master_or_develop_branch() {
   [[ "${TRAVIS_BRANCH}" == "master" ]] || [[ "${TRAVIS_BRANCH}" == "develop" ]]
+}
+
+function is_master_branch() {
+  [[ "${TRAVIS_BRANCH}" == "master" ]]
+}
+
+function is_packages_branch() {
+  [[ "${TRAVIS_BRANCH}" == "packages" ]]
 }
 
 # テストを実行する
