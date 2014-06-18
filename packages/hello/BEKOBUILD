@@ -7,18 +7,17 @@ md5sums=('67607d2616a0faaf5bc94c59dca7c3cb')
 
 build() {
   cd "${source_dir}/${package_name}-${package_version}"
-  ./configure --prefix=/
+  beko_config
   make
 }
 
 check() {
-  echo check: start?
   return 0
 }
 
 package() {
   cd "${source_dir}/${package_name}-${package_version}"
-  make DESTDIR="${package_dir}" install
+  make install
   rm -f "${package_dir}/usr/share/info/dir"
 }
 
