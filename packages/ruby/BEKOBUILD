@@ -1,4 +1,4 @@
-package_name=Ruby
+package_name=ruby
 package_version=2.1.2
 package_release=1
 package_desc="A dynamic, open source programming language with a focus onsimplicity and productivity."
