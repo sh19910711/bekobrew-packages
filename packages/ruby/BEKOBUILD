@@ -1,0 +1,24 @@
+package_name=Ruby
+package_version=2.1.2
+package_release=1
+package_desc="A dynamic, open source programming language with a focus onsimplicity and productivity."
+source=("http://cache.ruby-lang.org/pub/ruby/${package_version:0:3}/ruby-${package_version}.tar.gz")
+md5sums=('a5b5c83565f8bd954ee522bd287d2ca1')
+
+build() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  beko_config \
+    --enable-shared \
+    --disable-install-doc
+  make
+}
+
+check() {
+  return 0
+}
+
+package() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  make install
+}
+
