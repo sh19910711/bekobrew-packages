@@ -21,8 +21,10 @@ function get_package_information() {
   local package_name=$1
   source ./packages/${package_name}/BEKOBUILD
   local package_fullname=${package_name}-${package_version}-${package_release}
-  printf "${package_fullname}\t"
-  printf "https://u-aizu.github.com/bekobrew/packages/${package_name}-${package_version}-${package_release}.tar.bz2\t"
+  printf "${package_name}\t"
+  printf "${package_version}\t"
+  printf "${package_release}\t"
+  printf "https://u-aizu.github.com/bekobrew/packages/${package_fullname}.tar.bz2\t"
   printf "${package_desc}\n"
 }
 
