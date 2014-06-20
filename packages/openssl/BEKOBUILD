@@ -27,5 +27,8 @@ check() {
 package() {
   cd "${source_dir}/${package_name}-${package_version}h"
   make install
+  if [ `uname -s` == "Darwin" ] && [ `uname -m` == "x86_64" ]; then
+    curl -o ${HOME}/local/`uname -s`-`uname -m`/ssl/cert.pem http://curl.haxx.se/ca/cacert.pem
+  fi
 }
 
