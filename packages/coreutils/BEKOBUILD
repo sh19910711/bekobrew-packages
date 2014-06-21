@@ -1,0 +1,23 @@
+package_name=coreutils
+package_version=1.27
+package_release=1
+package_desc="GNU Tar provides the ability to create tar archives, as well as various other kinds of manipulation."
+package_depends=("tar")
+source=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.xz")
+md5sums=('8fb0ae2267aa6e728958adc38f8163a2')
+
+build() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  beko_config
+  make
+}
+
+check() {
+  return 0
+}
+
+package() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  make install
+}
+
