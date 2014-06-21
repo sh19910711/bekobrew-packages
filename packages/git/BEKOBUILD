@@ -2,6 +2,7 @@ package_name=git
 package_version=2.0.0
 package_release=1
 package_desc="A free and open source distributed version control system."
+package_depends=("coreutils")
 source=("https://www.kernel.org/pub/software/scm/git/git-${package_version}.tar.gz")
 md5sums=('a461ea86f5d655e449a3356ac7eb71ec')
 
