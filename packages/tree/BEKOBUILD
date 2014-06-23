@@ -5,7 +5,7 @@ package_desc="A recursive directory listing command."
 source=(
   "ftp://mama.indstate.edu/linux/${package_name}/${package_name}-${package_version}.tgz"
   "makefile-use-freebsd-flags.patch"
-  "tree-define-s_is_addr-0.patch"
+  "./tree-define-s_isdoor-0.patch"
 )
 md5sums=(
   'abe3e03e469c542d8e157cdd93f4d8a6'
