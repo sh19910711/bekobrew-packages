@@ -1,0 +1,35 @@
+package_name=tree
+package_version=1.7.0
+package_release=1
+package_desc="A recursive directory listing command."
+source=(
+  "ftp://mama.indstate.edu/linux/${package_name}/${package_name}-${package_version}.tgz"
+  "makefile-use-freebsd-flags.patch"
+  "tree-define-s_is_addr-0.patch"
+)
+md5sums=(
+  'abe3e03e469c542d8e157cdd93f4d8a6'
+  '1a35f6257c827e8b907ced7b1d69de13'
+  'c55cb17a339c5a1f60034faf4701b00f'
+)
+
+prepare() {
+  patch -p0 < ./makefile-use-freebsd-flags.patch
+  [ `uname -s` == "SunOS" ] && patch -p0 < ./tree-define-s_is_addr-0.patch
+}
+
+build() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  beko_config
+  make
+}
+
+check() {
+  return 0
+}
+
+package() {
+  cd "${source_dir}/${package_name}-${package_version}"
+  make install
+}
+
