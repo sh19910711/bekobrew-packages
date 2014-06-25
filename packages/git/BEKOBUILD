@@ -1,6 +1,6 @@
 package_name=git
 package_version=2.0.0
-package_release=1
+package_release=2
 package_desc="A free and open source distributed version control system."
 package_depends=("coreutils")
 package_sources=("https://www.kernel.org/pub/software/scm/git/git-${package_version}.tar.gz")
