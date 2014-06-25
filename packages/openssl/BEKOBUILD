@@ -2,8 +2,8 @@ package_name=openssl
 package_version=1.0.1
 package_release=4
 package_desc="Open Source toolkit implementing the Secure Sockets Layer (SSL v2/v3) and Transport Layer Security (TLS v1) protocols"
-source=("http://www.openssl.org/source/openssl-${package_version}h.tar.gz")
-md5sums=('8d6d684a9430d5cc98a62a5d8fbda8cf')
+package_sources=("http://www.openssl.org/source/openssl-${package_version}h.tar.gz")
+package_md5sums=('8d6d684a9430d5cc98a62a5d8fbda8cf')
 
 build() {
   cd "${source_dir}/${package_name}-${package_version}h"

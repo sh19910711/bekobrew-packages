@@ -2,8 +2,8 @@ package_name=tar
 package_version=1.27
 package_release=1
 package_desc="GNU Tar provides the ability to create tar archives, as well as various other kinds of manipulation."
-source=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.gz")
-md5sums=('9d4bc655d103b871248281db179eb0f5')
+package_sources=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.gz")
+package_md5sums=('9d4bc655d103b871248281db179eb0f5')
 
 build() {
   cd "${source_dir}/${package_name}-${package_version}"

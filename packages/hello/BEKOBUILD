@@ -2,8 +2,8 @@ package_name=hello
 package_version=2.9
 package_release=5
 package_desc="GNU Hello"
-source=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.gz")
-md5sums=('67607d2616a0faaf5bc94c59dca7c3cb')
+package_sources=("http://ftp.gnu.org/gnu/${package_name}/${package_name}-${package_version}.tar.gz")
+package_md5sums=('67607d2616a0faaf5bc94c59dca7c3cb')
 
 build() {
   cd "${source_dir}/${package_name}-${package_version}"
